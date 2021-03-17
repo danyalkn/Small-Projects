@@ -1,32 +1,33 @@
-import logo from "./linux-icon.png";
+import React, { Component } from "react";
 import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
+import Counter from "./components/Counter";
 
-function Header() {
-  return (
-    <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title"> LinuxBuddies...</h1>
-        <p>
-          Coming Soon...
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Click to follow
-        </a>
-      </header>
-  );
-}
+class App extends Component {
+  add(a, b) {
+    return a + b;
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <Header
+          title={"Hello"}
+          num={7}
+          myArr={[10, 2, 3]}
+          myFunc={this.add}
+          myObj={{
+            a: 5,
+            b: 6
+          }}
+        />
+        <Body myFunc={this.add} text="i am cool" text2="i am cool2" />
+        <Counter initialCount={0} />
+        <Counter initialCount={10} />
+      </div>
+    );
+  }
 }
 
 export default App;
