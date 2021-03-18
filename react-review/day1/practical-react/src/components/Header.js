@@ -6,8 +6,7 @@ export default class Header extends React.Component {
       return (
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">{this.props.title}</h1>
-          <div>{this.props.myFunc(10, 12)}</div>
+          <h1 className="App-title">you have found me</h1>
         </header>
       );
     }

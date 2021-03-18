@@ -1,32 +1,72 @@
 import React, { Component } from "react";
 import "./App.css";
-import Body from "./components/Body";
-import Header from "./components/Header";
+import ImageSlider from "./components/ImageSlider";
 import Counter from "./components/Counter";
+import Header from "./components/Header";
 
 class App extends Component {
-  add(a, b) {
-    return a + b;
-  }
+  /* Method #1 
+  state = {
+    visible: true,
+  };
 
   render() {
+    const buttonText = this.state.visible ? "hide" : "show";
     return (
       <div className="App">
-        <Header
-          title={"Hello"}
-          num={7}
-          myArr={[10, 2, 3]}
-          myFunc={this.add}
-          myObj={{
-            a: 5,
-            b: 6
+        {this.state.visible ? <ImageSlider /> : (<div><Counter /></div>)}
+        <button
+          onClick={() => {
+            this.setState({ visible: !this.state.visible });
           }}
-        />
-        <Body myFunc={this.add} text="i am cool" text2="i am cool2" />
-        <Counter initialCount={0} />
-        <Counter initialCount={10} />
+        >
+          {buttonText}
+        </button>
       </div>
     );
+  }
+   */
+
+  state = {
+    visible: true,
+    whichComponentToShow: "ImageSlider",
+  };
+
+  render() {
+    if (this.state.whichComponentToShow === "ImageSlider") {
+      return (
+        <div className="App">
+          <ImageSlider />
+          <button
+            onClick={() => {
+              this.setState({ whichComponentToShow: "Counter" });
+            }}
+          >
+            show counter
+          </button>
+        </div>
+      );
+    } else if (this.state.whichComponentToShow === "Counter") {
+      return (
+        <div className="App">
+          <Counter />
+          <button
+            onClick={() => {
+              this.setState({ whichComponentToShow: "Header" });
+            }}
+          >
+            show header
+          </button>
+        </div>
+      );
+    } else if (this.state.whichComponentToShow === "Header") {
+      return (
+        <div className="App">
+          <Header />
+        </div>
+      )
+    }
+    return null;
   }
 }
 
